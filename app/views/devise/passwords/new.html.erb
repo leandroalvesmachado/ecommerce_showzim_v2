@@ -1,0 +1,25 @@
+<h2>Forgot your password?</h2>
+
+<%= simple_form_for(resource, html: { class: 'login-form' }, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <div class="text-center">
+    <%= f.error_notification %>
+  </div>
+  <div class="form-inputs">
+    <%= f.input :email,
+                required: true,
+                autofocus: true,
+                label: false,
+                placeholder: 'E-mail',
+                input_html: { autocomplete: "email" } %>
+  </div>
+
+  <%= render 'devise/shared/button_submit', f: f, text: 'Recuperar senha' %>
+  <div class="form-group d-md-flex">
+    <div class="w-50">
+      <%= f.input :remember_me, input_html: { class: 'remember' }, as: :boolean if devise_mapping.rememberable? %>
+    </div>
+    <div class="w-50 text-md-right">
+      <%= render 'devise/shared/links' %>
+    </div>
+  </div>
+<% end %>
