@@ -1,9 +1,16 @@
-<h1>Olá</h1>
-<% if user_signed_in? %>
-  <h1>Bem vindo</h1>
-  <%= button_to "logout", destroy_user_session_path, method: :delete %>
-<% else %>
-  <h2>Você não esta logado</h2>
-  <%= link_to "Sign up", new_user_registration_path %><br />
-  <%= link_to "Log in", new_user_session_path %><br />
-<% end %>
+<header class="bg-dark py-5">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="text-center text-white">
+      <h1 class="display-4 fw-bolder">Sua loja virtual preferida</h1>
+      <p class="lead fw-normal text-white-50 mb-0">Aqui vai ser o slogan</p>
+    </div>
+  </div>
+</header>
+<!-- Section-->
+<section class="py-5">
+  <div class="container px-4 px-lg-5 mt-5">
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+    </div>
+  </div>
+</section>
+<!-- Footer-->
