@@ -1,11 +1,12 @@
-<p style="color: green"><%= notice %></p>
+<h1 class="h2 mb-4 text-gray-800">Detalhes da categoria</h1>
 
-<%= render @category %>
-<!--
-<div>
-  <%= link_to "Edit this category", edit_category_path(@category) %> |
-  <%= link_to "Back to categories", categories_path %>
-
-  <%= button_to "Destroy this category", @category, method: :delete %>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card shadow mb-4">
+      <div class="card-body">
+        <%= render @category %>
+      </div>
+    </div>
+  </div>
 </div>
--->
+
