@@ -11,11 +11,18 @@ module Admin
     end
 
     def new
+      # @product = Product.new
+      # @product = authorize Product.new
+
       @product = Product.new
+      authorize @product
+      
+      rescue Pundit::NotAuthorizedError
+        flash[:notice] = 'Você só pode cadastrar um produto se existir alguma categoria cadastrada'
+        redirect_to action: :index
     end
 
-    def edit
-    end
+    def edit; end
 
     def create
       @product = Product.new(product_params)
@@ -40,7 +47,7 @@ module Admin
     end
 
     def destroy
-      @category.destroy
+      @product.destroy
 
       respond_to do |format|
         format.html { redirect_to admin_products_path, notice: 'Produto deletado com sucesso.' }
@@ -54,7 +61,7 @@ module Admin
     end
 
     def product_params
-      params.require(:product).permit(:name, :description, :price, :publish, :category_id)
+      params.require(:product).permit(:name, :description, :price, :publish, :image, :category_id)
     end
   end
 end
