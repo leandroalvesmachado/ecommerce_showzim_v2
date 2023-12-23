@@ -27,22 +27,26 @@ module Admin
     def create
       @product = Product.new(product_params)
 
-      respond_to do |format|
-        if @product.save
-          format.html { redirect_to admin_products_path(@product), notice: 'Produto criado com sucesso.' }
-        else
-          format.html { render :new, status: :unprocessable_entity }
-        end
+      if @product.save
+        redirect_to admin_products_path(@product), notice: 'Produto criado com sucesso.'
+      else
+        render :new, status: :unprocessable_entity
       end
     end
 
     def update
-      respond_to do |format|
-        if @product.update(product_params)
-          format.html { redirect_to admin_products_path(@product), notice: 'Produto atualizado com sucesso.' }
-        else
-          format.html { render :edit, status: :unprocessable_entity }
-        end
+      # respond_to do |format|
+      #   if @product.update(product_params)
+      #     format.html { redirect_to admin_products_path(@product), notice: 'Produto atualizado com sucesso.' }
+      #   else
+      #     format.html { render :edit, status: :unprocessable_entity }
+      #   end
+      # end
+
+      if @product.update(product_params)
+        redirect_to admin_products_path(@product), notice: 'Produto atualizado com sucesso.'
+      else
+        render :edit, status: :unprocessable_entity
       end
     end
 
@@ -61,7 +65,16 @@ module Admin
     end
 
     def product_params
-      params.require(:product).permit(:name, :description, :price, :publish, :image, :category_id)
+      params.require(:product).permit(
+        :name,
+        :description,
+        :price,
+        :promo,
+        :promo_price,
+        :publish,
+        :image,
+        :category_id
+      )
     end
   end
 end

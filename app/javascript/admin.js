@@ -7,3 +7,6 @@ import * as bootstrap from "bootstrap"
 
 import './sbadmin/sb-admin-2.js'
 import './sbadmin/jquery.easing.min.js'
+
+window.bootstrap = bootstrap
+
